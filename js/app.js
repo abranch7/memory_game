@@ -4,11 +4,26 @@
 
 
 /*
- * Display the cards on the page
+ * 1. Display the cards on the page (run esposeCard on all cards)
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+ // 2. add event listener to reset icon that:
+     // a. sets moves to 0
+     // b. runs resetCard() on all cards
+
+ //3 . add event listener to the table (class=deck) that when:
+//a. a first card is clicked, makes the font color white , background pink and holds class name in variable first-card (function exposeCard())
+//b. when a second card is clicked, run exposeCard() and store class in variable (second-car)
+//c. if first-card=second-card create a css transition to indicate success. Add 1 to matches-made variable
+//d. if matches-made =8 :
+    // 1.hide the table and display a message
+    // 2. provide a button with event handler that when clicked:
+    //     a. resets the table
+    //     b. hides the success message and button
+//d. if first-card != second card run resetCard() on each card that takes icon color and background color back to the original
+//5. add 2 to counter
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
