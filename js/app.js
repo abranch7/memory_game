@@ -4,7 +4,7 @@
 var myCards = document.getElementsByClassName('card');
 var moveCount = document.getElementsByClassName('moves')[0];
 var stars =document.getElementsByClassName('fa-star');
-var reset = document.getElementsByClassName('restart');
+var reset = document.getElementsByClassName('restart')[0];
 
 /*
  * 1. Display the cards on the page (run esposeCard on all cards)
@@ -32,6 +32,7 @@ var reset = document.getElementsByClassName('restart');
 
 // reset.addEventListener('click', shuffle);
 reset.addEventListener('click', resetGame);
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -46,6 +47,7 @@ function shuffle(array) {
     return array;
 }
 function resetGame(myCards) {
+    console.log("got here");
     shuffle(myCards);
     hideAll(myCards);
     resetCount();
@@ -54,7 +56,7 @@ function resetGame(myCards) {
 
 function hideAll(myArray) {
     for (var i = 0; i<myArray.length; i++){
-        myArray[i].style.backgroundColor=" #2e3d49";
+        myArray[i].style.backgroundColor="#2e3d49";
         myArray[i].style.color="#2e3d49";
     }
 }
@@ -68,7 +70,23 @@ function resetStars() {
         stars[i].classList.remove('outline');
     }
 }
-
+//code to flip a card, flip a second card, test for equivalence, add moves, change stars, flip back if no match, decrement remaining cards if matched
+// myCards.addEventListener("click", flipPair);
+//
+// function flipPair(a,b) {
+//     var One = flipCard(a);
+//     var Two = flipCard(b);
+//     if (One === Two) {
+//         // remove
+//     }
+//
+// }
+// function flipCard(card) {
+//     var className = card.attr("class");
+//     card.classList.add('open');
+//     return className;
+// }
+//code to show that you won a game
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
