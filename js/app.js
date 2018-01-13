@@ -1,7 +1,10 @@
 /*
  * Create a list that holds all of your cards
  */
-
+var myCards = document.getElementsByClassName('card');
+var moveCount = document.getElementsByClassName('moves')[0];
+var stars =document.getElementsByClassName('fa-star');
+var reset = document.getElementsByClassName('restart');
 
 /*
  * 1. Display the cards on the page (run esposeCard on all cards)
@@ -26,6 +29,9 @@
 //5. add 2 to counter
 
 // Shuffle function from http://stackoverflow.com/a/2450976
+
+// reset.addEventListener('click', shuffle);
+reset.addEventListener('click', resetGame);
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -39,7 +45,29 @@ function shuffle(array) {
 
     return array;
 }
+function resetGame(myCards) {
+    shuffle(myCards);
+    hideAll(myCards);
+    resetCount();
+    resetStars();
+}
 
+function hideAll(myArray) {
+    for (var i = 0; i<myArray.length; i++){
+        myArray[i].style.backgroundColor=" #2e3d49";
+        myArray[i].style.color="#2e3d49";
+    }
+}
+
+function resetCount() {
+    moveCount = 0;
+}
+
+function resetStars() {
+    for (var i=0; i<stars.length ; i++){
+        stars[i].classList.remove('outline');
+    }
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
