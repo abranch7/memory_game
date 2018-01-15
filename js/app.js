@@ -3,6 +3,7 @@
  */
 var myCards = document.getElementsByClassName('card');
 var moveCount = document.getElementsByClassName('moves')[0];
+var totalMoves = moveCount.innerText;
 var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
 var myDeck = document.getElementsByTagName("ul")[0];
@@ -67,27 +68,28 @@ function resetStars() {
         stars[i].classList.remove('outline');
     }
 }
-
 /* end reset functions */
 //code to flip a card, flip a second card, test for equivalence, add moves, change stars, flip back if no match, decrement remaining cards if matched
 myDeck.addEventListener("click", flipCard);
 //
-function flipPair(a,b) {
-    var One = flipCard(a);
-    var Two = flipCard(b);
-    console.log(One, Two);
-    // if (One === Two) {
-    //     // remove
-    // }
-    // elseif (One !== Two) {
-    //     //i need to return the event for each and evt.classList.remove('open')
-    //     //then would event.stopPropogation() work on each ? how to refer to that
-    // }
- moveCount.innerText =moveCount.innerText + 1;
- }
+// function flipPair(a,b) {
+//     var One = flipCard(a);
+//     var Two = flipCard(b);
+//     console.log(One, Two);
+//     // if (One === Two) {
+//     //     add class "match" to each
+//     //     stop propogation to each
+//     //     remove 2 from unmatched cards
+//     // }
+//     // elseif (One !== Two) {
+//     //     //i need to return the event for each and evt.classList.remove('open')
+//     //
+//     // }
+//
+//  }
 function flipCard(evt) {
     console.log("flipcard started");
-    var className = evt.attr("class");
+    var className = evt.classList;
     evt.classList.add('open');
     return className;
 }
