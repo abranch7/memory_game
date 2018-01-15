@@ -5,6 +5,7 @@ var myCards = document.getElementsByClassName('card');
 var moveCount = document.getElementsByClassName('moves')[0];
 var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
+var myDeck = document.getElementsByTagName("ul")[0];
 
 /*
  * 1. Display the cards on the page (run esposeCard on all cards)
@@ -32,10 +33,8 @@ var reset = document.getElementsByClassName('restart')[0];
 
 // reset.addEventListener('click', shuffle);
 reset.addEventListener('click', resetGame);
-
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
-
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -43,17 +42,15 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
-function resetGame(myCards) {
-    console.log("got here");
+function resetGame() {
     shuffle(myCards);
     hideAll(myCards);
     resetCount();
     resetStars();
 }
-
+/* reset functions */
 function hideAll(myArray) {
     for (var i = 0; i<myArray.length; i++){
         myArray[i].style.backgroundColor="#2e3d49";
@@ -62,7 +59,7 @@ function hideAll(myArray) {
 }
 
 function resetCount() {
-    moveCount = 0;
+    moveCount.innerText = 0;
 }
 
 function resetStars() {
@@ -70,22 +67,32 @@ function resetStars() {
         stars[i].classList.remove('outline');
     }
 }
+
+/* end reset functions */
 //code to flip a card, flip a second card, test for equivalence, add moves, change stars, flip back if no match, decrement remaining cards if matched
-// myCards.addEventListener("click", flipPair);
+myDeck.addEventListener("click", flipCard);
 //
-// function flipPair(a,b) {
-//     var One = flipCard(a);
-//     var Two = flipCard(b);
-//     if (One === Two) {
-//         // remove
-//     }
-//
-// }
-// function flipCard(card) {
-//     var className = card.attr("class");
-//     card.classList.add('open');
-//     return className;
-// }
+function flipPair(a,b) {
+    var One = flipCard(a);
+    var Two = flipCard(b);
+    console.log(One, Two);
+    // if (One === Two) {
+    //     // remove
+    // }
+    // elseif (One !== Two) {
+    //     //i need to return the event for each and evt.classList.remove('open')
+    //     //then would event.stopPropogation() work on each ? how to refer to that
+    // }
+ moveCount.innerText =moveCount.innerText + 1;
+ }
+function flipCard(evt) {
+    console.log("flipcard started");
+    var className = evt.attr("class");
+    evt.classList.add('open');
+    return className;
+}
+
+
 //code to show that you won a game
 /*
  * set up the event listener for a card. If a card is clicked:
