@@ -140,8 +140,9 @@ function success() {
     successDiv.style.background = "#F6F6F6";
     successDiv.style.color = "#FF0000";
     successDiv.style.zIndex = "10";
-    successDiv.appendChild(successMessage);
-    document.body.appendChild("successDiv");
+    successDiv.appendChild(successP);
+    document.body.appendChild(successDiv);
+    console.log(successDiv);
     //shuffle
     //hide
     //remove div with msg
