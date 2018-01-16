@@ -6,7 +6,9 @@ var moveCount = document.getElementsByClassName('moves')[0];
 var totalMoves = moveCount.innerText;
 var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
-var myDeck = document.getElementsByTagName("ul")[0];
+var myDeck = document.getElementsByTagName("ul")[1];
+var unMatchedCards = myCards.length;
+
 
 /*
  * 1. Display the cards on the page (run esposeCard on all cards)
@@ -77,23 +79,58 @@ myDeck.addEventListener("click", flipCard);
 //     var Two = flipCard(b);
 //     console.log(One, Two);
 //     // if (One === Two) {
-//     //     add class "match" to each
-//     //     stop propogation to each
-//     //     remove 2 from unmatched cards
+//     //     One.classList.add('match');
+       //      One.classList.remove('open');
+       //     Two.classList.add('match');
+       //      Tow.classList.remove('open');
+//     //     One.stopPropagation();
+       //     Two.stopPropagation();
+
+//     //    unMatchedCards = unMatchedCards -2;
+                if (unMatchedCards = 0) {
+                    success();
+                }
 //     // }
-//     // elseif (One !== Two) {
+//     // else if (One !== Two) {
 //     //     //i need to return the event for each and evt.classList.remove('open')
 //     //
 //     // }
-//
+// totalMoves +=1;
 //  }
 function flipCard(evt) {
     console.log("flipcard started");
     var className = evt.classList;
+    console.log(className);
     evt.classList.add('open');
     return className;
 }
+//control the styling of the stars as number of moves increases
+function stars(numMoves) {
+    if (10< numMoves && numMoves <=12) {
+    //add outline class to 3rd star
+    }
+    else if (12<numMoves && numMoves<=13) {
+        //add outline class to 2nd and third star
+    }
+    else if (13<numMoves) {
+        //add outline class to all stars
+    }
 
+}
+
+//success function
+function success() {
+    //remove outlline from all stars
+    var stars =document.getElementsByClassName;
+    for (var i = 0; i<stars.length; i++) {
+        stars[i].classList.remove('outline');
+    }
+    resetGame();
+    //add a div to the page with success msg and btn to play again
+    //shuffle
+    //hide
+    //remove div with msg
+}
 
 //code to show that you won a game
 /*
