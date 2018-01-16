@@ -8,6 +8,7 @@ var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
 var myDeck = document.getElementsByTagName("ul")[1];
 var unMatchedCards = myCards.length;
+const successMessage = "You won the game. Click to play again.";
 
 
 /*
@@ -98,7 +99,7 @@ myDeck.addEventListener("click", flipCard);
 // totalMoves +=1;
 //  }
 function flipCard(evt) {
-    console.log("flipcard started");
+    console.log("flipcard started", evt);
     var className = evt.classList;
     console.log(className);
     evt.classList.add('open');
@@ -121,7 +122,7 @@ function stars(numMoves) {
 //success function
 function success() {
     //remove outlline from all stars
-    var stars =document.getElementsByClassName;
+    var stars =document.getElementsByClassName("fa-star");
     for (var i = 0; i<stars.length; i++) {
         stars[i].classList.remove('outline');
     }
