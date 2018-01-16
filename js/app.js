@@ -11,6 +11,7 @@ var unMatchedCards = myCards.length;
 const successMessage = "You won the game. Click to play again.";
 
 
+
 /*
  * 1. Display the cards on the page (run esposeCard on all cards)
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -100,9 +101,12 @@ myDeck.addEventListener("click", flipCard);
 //  }
 function flipCard(evt) {
     console.log("flipcard started", evt);
-    var className = evt.classList;
+    var className = evt.target.classList;
+
+    evt.target.classList.add('open');
+    evt.target.style.color("white");
+
     console.log(className);
-    evt.classList.add('open');
     return className;
 }
 //control the styling of the stars as number of moves increases
@@ -125,6 +129,7 @@ function success() {
     var stars =document.getElementsByClassName("fa-star");
     for (var i = 0; i<stars.length; i++) {
         stars[i].classList.remove('outline');
+        console.log("outline "+i);
     }
     resetGame();
     //add a div to the page with success msg and btn to play again
