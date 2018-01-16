@@ -132,7 +132,16 @@ function success() {
         console.log("outline "+i);
     }
     resetGame();
-    //add a div to the page with success msg and btn to play again
+    var successDiv = document.createElement('div');
+    var successP = document.createElement('p');
+    var successP.textContent = "Do you want to play again?";
+    successDiv.style.width = "960px";
+    successDiv.style.height = "500px";
+    successDiv.style.background = "#F6F6F6";
+    successDiv.style.color = "#FF0000";
+    successDiv.style.zIndex = "10";
+    successDiv.appendChild(successMessage);
+    document.body.appendChild("successDiv");
     //shuffle
     //hide
     //remove div with msg
