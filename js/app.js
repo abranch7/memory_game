@@ -134,7 +134,7 @@ function success() {
     resetGame();
     var successDiv = document.createElement('div');
     var successP = document.createElement('p');
-    var successP.textContent = "Do you want to play again?";
+    successP.textContent = "Do you want to play again?";
     successDiv.style.width = "960px";
     successDiv.style.height = "500px";
     successDiv.style.background = "#F6F6F6";
