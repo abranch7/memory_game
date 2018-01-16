@@ -104,7 +104,7 @@ function flipCard(evt) {
     var className = evt.target.classList;
 
     evt.target.classList.add('open');
-    evt.target.style.color("white");
+    evt.target.style=  "color: 'white'";
 
     console.log(className);
     return className;
