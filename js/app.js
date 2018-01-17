@@ -1,28 +1,50 @@
-/*
- * Create a list that holds all of your cards
- */
+
+
+ /* initializing variables */
 var myDeck = document.getElementsByTagName("ul")[1];
+var myArray;
 var moveCount = document.getElementsByClassName('moves')[0];
 var totalMoves = moveCount.innerText;
 var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
-
-
 const successMessage = "You won the game. Click to play again.";
-for (var i=0; i<16; i++) {
 
-    var li =document.createElement('li');
-    var icon = document.createElement("i");
-    li.classList.add('card');
+/*
+ * Create a list that holds all of your cards
+ */
+ const classNamesArray = [
+     "fa fa-diamond",
+     "fa fa-paper-plane-0",
+     "fa fa-anchor",
+     "fa fa-bolt",
+     "fa fa-cube",
+     "fa fa-leaf",
+     "fa fa-bicycle",
+     "fa fa-bomb"
+ ]
 
-    myDeck.appendChild(li);
-    li.appendChild(icon);
+ function createCard() {
+     var li =document.createElement('li');
+     var icon = document.createElement("i");
+     li.classList.add('card');
+     myDeck.appendChild(li);
+     li.appendChild(icon);
+     icon.classList.add("fa");
+ }
 
-    icon.classList.add("fa");
-    icon.classList.add ("fa-diamond");
 
+function popList() {
+for (var i=0; i<8; i++) {
+
+        for (var k=0; k<2; k++) {
+            var iCard=createCard();
+            iCard.classList.add(classNamesArray[k]);
+            console.log(iCard);
+        }
+    // icon.classList.add ("fa-diamond");
 }
-
+}
+popList();
 var myCards = document.getElementsByClassName('card');
 var unMatchedCards = myCards.length;
 
