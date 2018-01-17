@@ -1,15 +1,30 @@
 /*
  * Create a list that holds all of your cards
  */
-var myCards = document.getElementsByClassName('card');
+var myDeck = document.getElementsByTagName("ul")[1];
 var moveCount = document.getElementsByClassName('moves')[0];
 var totalMoves = moveCount.innerText;
 var stars =document.getElementsByClassName('fa-star');
 var reset = document.getElementsByClassName('restart')[0];
-var myDeck = document.getElementsByTagName("ul")[1];
-var unMatchedCards = myCards.length;
-const successMessage = "You won the game. Click to play again.";
 
+
+const successMessage = "You won the game. Click to play again.";
+for (var i=0; i<16; i++) {
+    console.log("trip " +i);
+    var li =document.createElement('li');
+    var icon = document.createElement("i");
+    li.classList.add('card');
+
+    myDeck.appendChild(li);
+    li.appendChild(icon);
+
+    icon.classList.add("fa");
+    icon.classList.add ("fa-diamond");
+    console.log("trip "+i+"through the loop");
+}
+
+var myCards = document.getElementsByClassName('card');
+var unMatchedCards = myCards.length;
 
 
 /*
@@ -75,36 +90,38 @@ function resetStars() {
 /* end reset functions */
 //code to flip a card, flip a second card, test for equivalence, add moves, change stars, flip back if no match, decrement remaining cards if matched
 myDeck.addEventListener("click", flipCard);
-//
-// function flipPair(a,b) {
-//     var One = flipCard(a);
-//     var Two = flipCard(b);
-//     console.log(One, Two);
-//     // if (One === Two) {
-//     //     One.classList.add('match');
-       //      One.classList.remove('open');
-       //     Two.classList.add('match');
-       //      Tow.classList.remove('open');
-//     //     One.stopPropagation();
-       //     Two.stopPropagation();
 
-//     //    unMatchedCards = unMatchedCards -2;
+function flipPair(a,b) {
+    var One = flipCard(a);
+    var Two = flipCard(b);
+    console.log(One, Two);
+     if (One === Two) {
+        One.classList.add('match');
+
+          Two.classList.add('match');
+
+       One.stopPropagation();
+           Two.stopPropagation();
+
+       unMatchedCards = unMatchedCards -2;
+   }
                 if (unMatchedCards = 0) {
                     success();
                 }
-//     // }
-//     // else if (One !== Two) {
-//     //     //i need to return the event for each and evt.classList.remove('open')
+//      }
+//      else if (One !== Two) {
+//      i need to return the event for each and evt.classList.remove('open')
 //     //
 //     // }
-// totalMoves +=1;
-//  }
+  totalMoves +=1;
+   }
 function flipCard(evt) {
     console.log("flipcard started", evt);
     var className = evt.target.classList;
 
     evt.target.classList.add('open');
-    evt.target.style=  "color: 'white'";
+    evt.target.classList.add('show');
+    // evt.target.style=  "color: 'white'";
 
     console.log(className);
     return className;
@@ -140,6 +157,7 @@ function success() {
     successDiv.style.background = "#F6F6F6";
     successDiv.style.color = "#FF0000";
     successDiv.style.zIndex = "10";
+    console.log(successP);
     successDiv.appendChild(successP);
     document.body.appendChild(successDiv);
     console.log(successDiv);
