@@ -10,7 +10,7 @@ var reset = document.getElementsByClassName('restart')[0];
 
 const successMessage = "You won the game. Click to play again.";
 for (var i=0; i<16; i++) {
-    console.log("trip " +i);
+
     var li =document.createElement('li');
     var icon = document.createElement("i");
     li.classList.add('card');
@@ -20,7 +20,7 @@ for (var i=0; i<16; i++) {
 
     icon.classList.add("fa");
     icon.classList.add ("fa-diamond");
-    console.log("trip "+i+"through the loop");
+
 }
 
 var myCards = document.getElementsByClassName('card');
@@ -157,10 +157,11 @@ function success() {
     successDiv.style.background = "#F6F6F6";
     successDiv.style.color = "#FF0000";
     successDiv.style.zIndex = "10";
-    console.log(successP);
+
     successDiv.appendChild(successP);
-    document.body.appendChild(successDiv);
-    console.log(successDiv);
+    myDeck.appendChild(successDiv);
+
+
     //shuffle
     //hide
     //remove div with msg
